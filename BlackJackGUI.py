@@ -49,6 +49,14 @@ class BlackJackGui:
         self.card_list:list[tk.Label] = []
         self.dealer_list:list[tk.Label] = []
 
+        self.card_back = get_image("./assets/CardImages/CardBack2.gif")
+        card_back_deck = tk.Label(self.frm_deck, image=self.card_back, background=self.bgcolor)
+        self.btn_deal = tk.Button(self.frm_control, text="Deal", command=self.hit_button, font=("Arial",60))
+        self.btn_stay = tk.Button(self.frm_control, text="Stay", command=self.staybutton, font=("Arial",60))
+        card_back_deck.pack()
+        self.btn_deal.pack(side="left")
+        self.btn_stay.pack(side="right")
+
     def hit_button(self):
         self.btn_stay.configure(text="Stay", command=self.staybutton)
         if self.game.game_status == 0:
@@ -71,15 +79,6 @@ class BlackJackGui:
             self.btn_stay.configure(text="Exit", command=self.exit)
             self.lbl_main_display.configure(text=self.game.display)
             self.display_cards()
-
-    def blackjack_display(self):
-        self.card_back = get_image("./assets/CardImages/CardBack2.gif")
-        card_back_deck = tk.Label(self.frm_deck, image=self.card_back, background=self.bgcolor)
-        self.btn_deal = tk.Button(self.frm_control, text="Deal", command=self.hit_button, font=("Arial",60))
-        self.btn_stay = tk.Button(self.frm_control, text="Stay", command=self.staybutton, font=("Arial",60))
-        card_back_deck.pack()
-        self.btn_deal.pack(side="left")
-        self.btn_stay.pack(side="right")
 
     def display_cards(self):
         while self.current_display_index < len(self.game.myHand.cards):

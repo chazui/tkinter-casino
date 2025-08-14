@@ -48,8 +48,6 @@ class WarDeck(Deck):
             self.oppHand.shuffle()
             self.max_index = self.min_deck()
 
-    
-
 class WarGame:
     def __init__(self):
         self.whole_deck = Deck()

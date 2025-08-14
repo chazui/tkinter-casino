@@ -36,18 +36,14 @@ class MainWindow(tk.Tk):
         self.update_idletasks()
         debugger.msg("[intro_display] Update complete")
 
-    def clear_intro(self):
-        self.frm_intro.pack_forget()
-
     def start_war(self):
         import WarGui
-        self.clear_intro()
+        self.frm_intro.pack_forget()
         self.ui = WarGui.WarGui(self)
         self.ui.make_war_frames()
         
     def start_blackjack(self):
         import BlackJackGUI
-        self.clear_intro()
+        self.frm_intro.pack_forget()
         self.ui = BlackJackGUI.BlackJackGui(self)
         self.ui.make_blackjack_frames()
-        self.ui.blackjack_display()
